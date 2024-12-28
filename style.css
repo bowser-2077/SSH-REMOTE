@@ -1,0 +1,107 @@
+/* Global styles */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2d2d2d;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Center the terminal in the middle of the page */
+#terminal {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title of the page */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #76c7c0;
+}
+
+/* Output area for commands */
+#output {
+    background-color: #111;
+    color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-size: 14px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Input field for commands */
+#command {
+    background-color: #333;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Style the button */
+button {
+    background-color: #76c7c0;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5bb6b0;
+}
+
+/* Logout button style */
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+form button {
+    background-color: #e74c3c;
+    font-size: 18px;
+}
+
+form button:hover {
+    background-color: #c0392b;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #terminal {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #command {
+        font-size: 14px;
+    }
+}

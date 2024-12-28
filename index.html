@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login SSH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Connexion SSH</h1>
+    <form id="login-form">
+      <input type="text" id="user" placeholder="Username" required>
+      <input type="text" id="ip" placeholder="SSH server IP" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('user').value;
+      const ip = document.getElementById('ip').value;
+      const password = document.getElementById('password').value;
+
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: user, password: password, host: ip })
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/terminal'; // Redirige vers le terminal
+        } else {
+          alert('Failure, check password,user and ip. You can try ping or ssh connect on a terminal.');
+        }
+      })
+      .catch(err => {
+        console.log('Error:', err);
+        alert('Error when login.');
+      });
+    });
+  </script>
+</body>
+</html>

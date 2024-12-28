@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal SSH</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Terminal SSH</h1>
+    
+    <!-- Zone de commande SSH -->
+    <div id="terminal">
+        <div id="output"></div>  <!-- Div pour afficher l'output de la commande -->
+        <input type="text" id="command" placeholder="Enter a command..." />
+        <button onclick="executeCommand()">Exécuter</button>
+    </div>
+
+    <!-- Déconnexion -->
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+
+    <script>
+        // Fonction pour exécuter la commande SSH
+        function executeCommand() {
+            var command = document.getElementById('command').value;
+
+            // Envoie de la commande au serveur
+            fetch('/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            })
+            .then(response => response.json())  // Attendre la réponse en JSON
+            .then(data => {
+                // Afficher l'output de la commande dans la page
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerHTML += `<pre>${data.output}</pre>`;  // Afficher l'output dans un format lisible
+                // Vider le champ de commande après l'exécution
+                document.getElementById('command').value = '';
+            })
+            .catch(err => {
+                console.error('Error :(', err);
+            });
+        }
+    </script>
+</body>
+</html>
