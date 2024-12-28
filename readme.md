@@ -8,6 +8,7 @@ You can use it to do anything on a ssh terminal.
 
 Make files like thats:
 
+```
 ssh-terminal-app/
 ├── node_modules/               # Folder containing all the dependencies installed by npm
 ├── public/                     # Contains publicly accessible files (CSS, images, JS)
@@ -19,6 +20,6 @@ ssh-terminal-app/
 ├── server.js                   # Main server file for Node.js
 ├── package.json                # File containing project information and dependencies
 └── README.md                   # README file with project documentation
-
+```
 
 # Launch the .bat file (MODIFY IT FOR THE RIGHT FLODERS)
